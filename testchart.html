@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<title>
+</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<body>
+<input name="data1" id="data1" type="text">  
+<input name="data2" id="data2" type="text">  
+<button value="Refresh Page" onclick="myFunction()">Press</button>
+<div style="width:500px;">
+<canvas id="myChart" width="200" height="200"></canvas>
+</div>
+</body>
+<script>
+function myFunction()
+{
+var ctx = document.getElementById("myChart").getContext('2d');
+var data1 = document.getElementById("data1").value;
+var data2 = document.getElementById("data2").value;
+
+if (data1 <100 && data2<100)
+{
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["     Achieved", "  To Achieve"],	 
+        datasets: [{
+            
+            data: [data1, data2],
+            backgroundColor: [
+                'rgb(95, 200, 60,0.5)',
+                'rgba(247, 12, 12,0.5)'           
+            ],
+            borderColor: [
+                'rgb(95, 200, 60,1)',
+                'rgba(247, 12, 12, 0.5)'             
+            ],
+            borderWidth: 2		
+        }]
+    },
+	options:{
+	legend: {
+            labels: {
+                fontColor: '#F1C40F',
+                fontSize: 18
+            }
+			},
+	cutoutPercentage:70,
+	title: {
+            display: true,
+            text: 'Target Graph',
+			fontColor:'#FF9333',
+			 fontSize: 50
+        }
+	}
+});
+}
+else
+{
+//document.body.style.backgroundImage = "url('https://media.giphy.com/media/fcuyIsxkuKRFe/giphy.gif')";
+//document.body.style.backgroundSize = "1800px 800px";
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["      Achieved", "Extra Scored"],
+        datasets: [{
+            labels: '# of Votes',
+            data: [data1, data2],
+            backgroundColor: [
+                'rgb(95, 200, 60,0.5)',           
+                'rgb(245, 155, 1)'     
+            ],
+            borderColor: [
+                'rgb(95, 200, 60,1)',          
+                'rgba(255, 206, 86, 5)'       
+            ],
+            borderWidth: 5	
+        }]
+    },
+	options:{
+	legend: {
+            labels: {
+                fontColor: '#F1C40F',
+                fontSize: 25
+            }
+			},
+	cutoutPercentage:70,
+	title: {
+            display: true,
+            text: 'Target Graph',
+			fontColor:'#FF9333',
+			 fontSize: 50
+        }
+	}
+});
+}
+}
+</script>
+
+</html>
+
